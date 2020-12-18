@@ -11,8 +11,58 @@
   <body>
 
     <!--
-    J'utilise ce fichier pour coder / modifier les autres fichiers templates vu qu'ils utilisent des variables pour se construire. 
+    J'utilise ce fichier pour coder / modifier les autres fichiers templates vu qu'ils utilisent des variables pour se construire.
     -->
+    <div id="mainContent">
+      <div class="logo">
+        <img src="../static/media/logo_punctum.svg"/>
+      </div>
+      <section>
+        <div id="wpaStatus">
+          <ul>
 
+            {% if config_hash['wpa_enabled'] == '1': %}
+              <li><a href="{{ url_for('wpa_settings') }}">Config. Mode WPA: ENABLED</a></li>
+              <li><a href="{{ url_for('wpa_settings') }}">Key: {{ config_hash['wpa_key'] }}</a></li>
+            {% endif %}
+
+            {% if config_hash['wpa_enabled'] == '0': %}
+              <li><a href="{{ url_for('wpa_settings') }}">Config. Mode WPA: DISABLED</a></li>
+          {% endif %}
+
+          </ul>
+        </div>
+
+        <h1>Configuration du wifi</h1>
+        <p class="description">Veuillez fournir l'accès à votre réseau wifi pour pouvoir écouter des natures distantes avec votre Punctum.</p>
+
+        <form action="{{ url_for('save_credentials') }}" method=post>
+          <ul>
+            <li class="label"><label for="ssid">Sélectionnez votre réseau wifi</label></li>
+            <li class="input wifiNetwork">
+              <select id="ssid" name="ssid", class="wifiNetworkInputs">
+                {% for ssid in wifi_ap_array %}
+                  <option value='{{ ssid }}'>{{ ssid }}</option>
+                {% endfor %}
+              </select>
+            </li>
+
+            <li class="manualSSIDEntry_wrap"><a href="{{ url_for('manual_ssid_entry') }}" class="manualSSIDEntry">Entrer le nom du réseau manuellement</a></li>
+
+            <li class="label"><label for="wifi_key">Entrez le mot de passe de votre réseau wifi</label></li>
+            <li class="input"><input type="input" name="wifi_key", class="wifiNetworkInputs"></li>
+
+            <input type="submit" class="wifiConnectButton" value="Valider">
+          </ul>
+        </form>
+      </section>
+      <aside>
+        <video loop autoplay mute>
+          <source src="../static/media/ondes.mp4" type="video/mp4">
+        </video>
+      </aside>
+    </div>
+
+    
   </body>
 </html>

@@ -253,3 +253,22 @@ div#saveCredentialsOutput{
   margin:20px 0px;
   display: block;
 }
+
+
+@media (max-width : 768px)  {
+  div#mainContent {
+    width: calc(100% - 20px);
+    max-width: 480px;
+  }
+
+  div#mainContent > section {
+      padding: 10px;
+      width: auto;
+      max-width: 480px;
+
+  }
+  div#mainContent > aside {
+    display: none;
+  }
+
+}
