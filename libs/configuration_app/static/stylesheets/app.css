@@ -1,33 +1,110 @@
 /* General
 ---------------------------------------------------------*/
+
+
+@font-face {
+    font-family: 'Open_sans';
+    src: url('../fonts/opensans-bold-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-bold-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Open_sans';
+    src: url('../fonts/opensans-regular-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-regular-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Open_sans';
+    src: url('../fonts/opensans-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/opensans-semibold-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+
 *, :after, :before {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 body,
 html {
-margin:0;
-padding:0;
+  margin:0;
+  padding:0;
+  width:100%;
+  height: 100%;
+  font-family: 'Open_sans';
 }
 
-body{
-    background-color: #000;
-    margin:0;
-    color: white;
+body {
+  background:url('../media/gradient_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+div.logo {
+  position: absolute;
+  top:20px;
+  left:20px;
+  width:140px;
+}
+.logo object {
+  height: 100%;
+  width: 100%;
+}
+.logo svg {
+  height: 100%;
+  width: 100%;
 }
 
 div#mainContent{
-    padding:.3em;
-    background-color: #000;
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 3.5rem;
-    color: #fff;
+  background:#9ab2d4;
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
 }
 
-div#mainContent h1 {
-    margin:0 0 .5em 0;
-    font-size:3rem;
+div#mainContent > section {
+  padding: 86px;
+  box-sizing: border-box;
+  width: 480px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+}
+div#mainContent > aside {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+aside video {
+  height: 100%;
+  width: calc(100% - 60px);
+}
+
+div#mainContent section h1 {
+  font-size: 26px;
+  color:#f08683;
+  text-align: center;
+  width: 100%;
+  font-weight: 700;
+  margin: 0px 0px 30px 0px;
+}
+div#mainContent section p.description {
+  font-size: 14px;
+  color:#43658d;
+  margin:0px 0px 0px 0px;
+}
+
+div#mainContent form {
+  margin-top:40px;
+  width: 100%;
 }
 
 div#mainContent ul{
@@ -36,49 +113,51 @@ div#mainContent ul{
     padding: 0;
 }
 
-div#mainContent form {
-    margin-top:-2em;
-}
 
 div#wpaStatus{
     padding: 4px;
     margin: 0 0 10px 0;
     width: 250px;
-    background-color: #928043;
     text-align: left;
-    font-size: .3em;
+    font-size: 11px;
+    color:#808080;
 }
 
 div#wpaStatus a{
-    color: #fff;
+    color:#808080;
+    text-decoration: none;
 }
 
 label[for=ssid],
 label[for=wifi_key]{
-    font-size:1.9rem;
+  font-size: 12px;
+  color:#808080;
+  font-weight: 400;
+  margin-bottom: 5px;
 }
 
 /* Select
 ---------------------------------------------------------*/
 
-li label {
-    display:inline-block;
-    margin: 0.5em 0;
-    padding: 0.5em 0;
+li.label {
+  margin-top:20px;
+}
+li.input {
+  margin: 5px 0px 0px 0px;
+  background:white;
 }
 
 li.wifiNetwork {
     position: relative;
-    margin: 0;
 }
 
 li.wifiNetwork:after {
     content: '▼';
     position: absolute;
     width: 25px;
-    color: #deab04;
+    color: #1c143e;
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 10px;
     right: 0px;
     top: 40%;
     border-radius: 3px;
@@ -86,15 +165,11 @@ li.wifiNetwork:after {
     z-index: 2;
 }
 
-select.wifiNetworkInputs {
+.wifiNetworkInputs {
     position: relative;
     width: 100%;
-    background: #111;
     color: #999;
-    border: none;
     outline: none;
-    font-size: 1.5rem;
-    padding: 1em;
     margin: 0;
     border-radius: 3px;
     cursor: pointer;
@@ -102,29 +177,49 @@ select.wifiNetworkInputs {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    font-size: 14px;
+
+    color: #1c143e;
+    background: white;
+    border:#e5e5e5 solid 1px;
+    height: 50px;
+    padding-left: 15px;
+    font-weight: 500;
 }
 
-.wifiNetworkInputs{
-    width: 100%;
-    padding:1em;
-    font-size: 1.4rem;
-    color: #999;
-    background: #111;
-    border:#999 solid 1px;
-}
 
 .wifiConnectButton{
-    width: 100%;
-    margin:2em 0;
-    padding:.5em;
-    background-color: #deab04;
-    font-size: 2rem;
-    color: #fff;
+    height: 40px;
+    padding:0px 24px;
+    background-color: #f08683;
+    font-size: 14px;
+    color: white;
+    font-weight: 700;
+    border:none;
+    border-radius: 5px;
+    margin-top:20px;
+    cursor: pointer;
+}
+.wifiConnectButton:hover {
+  background:#f29491;
+}
+.wifiConnectButton:active {
+  background:#d97572;
 }
 
+.manualSSIDEntry_wrap {
+  margin-bottom: 20px;
+  margin-top:4px;
+
+}
 .manualSSIDEntry{
-	font-size: 1rem;
-	color: #fff;
+	font-size: 12px;
+	color: #f08683 ;
+  text-decoration: none;
+  font-weight: 600;
+}
+.manualSSIDEntry:hover {
+  text-decoration: underline;
 }
 
 div#wpaCredentialsForm{
@@ -143,50 +238,18 @@ div#saveCredentialsOutput{
   font-size: 1.7em;
 }
 
-.saveCredentialsSSID{
-  color: #deab04;
-  font-size: 2em;
+.saveCredentialsSSID p,
+.saveCredentialsOutput p {
+  color: #43658d;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0px;
 }
-
-/* Wifi Icon
----------------------------------------------------------*/
-
-.wifiIcon {
-    padding: 10px;
-}
-.wifiIcon, .wifiIcon:before {
-    display: inline-block;
-    border: 40px double transparent;
-    border-top-color: currentColor;
-    border-radius: 50%;
-}
-.wifiIcon:before {
-    content: '';
-    width: 0; height: 0;
-}
-
-/* Desktop
----------------------------------------------------------*/
-
-@media (min-width: 800px) {
-    div#mainContent h1 {
-        font-size:4.5rem;
-    }
-    div#mainContent {
-        max-width:768px;
-    }
-    li.wifiNetwork:after {
-        content: '▼';
-        position: absolute;
-        width: 50px;
-        color: #deab04;
-        font-weight: bold;
-        font-size: 2rem;
-        right: 0px;
-        bottom: 50px;
-        border-radius: 3px;
-        pointer-events: none;
-        z-index: 2;
-    }
-
+.saveCredentialsSSID span,
+.saveCredentialsOutput span {
+  color: #f08683;
+  font-size: 18px;
+  font-weight: 700;
+  margin:20px 0px;
+  display: block;
 }

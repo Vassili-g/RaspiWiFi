@@ -1,9 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-  <div id="mainContent">
-    <h1>WPA for Configuration Mode</h1>
-    <div class="wifiIcon"></div>
+<div id="mainContent">
+  <div class="logo">
+    <object type="image/svg+xml" data="../static/media/logo_punctum.svg"></object>
+  </div>
+  <section>
+    <h1>Mode de configuration WPA</h1>
 
     <div id="wpaCredentialsForm">
       <form action="{{ url_for('save_wpa_credentials') }}" method=post>
@@ -17,9 +20,17 @@
           <li><label for="wpa_key">WPA Key:</label></li>
           <li><input type="text" name="wpa_key" value={{wpa_key}} class="wifiNetworkInputs"></li>
 
-          <input type="submit", class="wifiConnectButton">
+          <input type="submit", class="wifiConnectButton" value="Valider">
         </ul>
       </form>
     </div>
-  </div>
+  </section>
+
+  <aside>
+    <video loop autoplay mute>
+      <source src="../static/media/ondes.mp4" type="video/mp4">
+    </video>
+  </aside>
+</div>
+
 {% endblock %}

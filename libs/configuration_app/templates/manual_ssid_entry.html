@@ -1,20 +1,33 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-  <div id="mainContent">
-    <h1>WiFi Setup</h1>
-    <div class="wifiIcon"></div>
+<div id="mainContent">
+  <div class="logo">
+    <object type="image/svg+xml" data="../static/media/logo_punctum.svg"></object>
+  </div>
+  <section>
+    <h1>Configuration du wifi</h1>
 
     <form action="{{ url_for('save_credentials') }}" method=post>
       <ul>
-        <li><label for="ssid">Enter your network SSID:</label></li>
-        <li><input type="text" name="ssid", class="wifiNetworkInputs"></li>
+        <li class="label"><label for="ssid">Entrez le nom de votre réseau wifi</label></li>
+        <li class="input"><input type="text" name="ssid", class="wifiNetworkInputs"></li>
 
-        <li><label for="wifi_key">Your Wifi password</label></li>
-        <li><input type="password" name="wifi_key", class="wifiNetworkInputs"></li>
+        <li class="label"><label for="wifi_key">Entrez le mot de passe de votre réseau wifi</label></li>
+        <li class="input"><input type="input" name="wifi_key", class="wifiNetworkInputs"></li>
 
-        <input type="submit", class="wifiConnectButton">
+        <input type="submit", class="wifiConnectButton" value="Valider">
       </ul>
     </form>
-  </div>
+  </section>
+
+  <aside>
+    <aside>
+      <video loop autoplay mute>
+        <source src="../static/media/ondes.mp4" type="video/mp4">
+      </video>
+    </aside>
+  </aside>
+
+</div>
 {% endblock %}
