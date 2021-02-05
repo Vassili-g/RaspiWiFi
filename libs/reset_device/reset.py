@@ -8,7 +8,6 @@ import reset_lib
 #GPIO.setmode(GPIO.BCM)
 #GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-counter = 0
 serial_last_four = subprocess.check_output(['cat', '/proc/cpuinfo'])[-5:-1].decode('utf-8')
 config_hash = reset_lib.config_file_hash()
 ssid_prefix = config_hash['ssid_prefix'] + " "
@@ -21,7 +20,11 @@ reboot_required = reset_lib.update_ssid(ssid_prefix, serial_last_four)
 
 if reboot_required == True:
     os.system('reboot')
- 
+
+# faire un fichier qu'on appelle via le script python avec juste cette ligne :
+# -->  reset_lib.reset_to_host_mode()
+# ?
+
 # This is the main logic loop waiting for a button to be pressed on GPIO 18 for 10 seconds.
 # If that happens the device will reset to its AP Host mode allowing for reconfiguration on a new network.
 #while True:
